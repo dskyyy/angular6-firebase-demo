@@ -11,6 +11,34 @@
   </div>
 </mat-toolbar>
 
+<div class="new-task" *ngIf="angularFireAuth.user | async">
+  <mat-form-field>
+    <input matInput placeholder="Task description" [(ngModel)]="newTask" />
+
+    <!-- Clear input button -->
+    <button mat-button *ngIf="newTask" matSuffix mat-icon-button aria-label="Clear input field" (click)="clearTaskField()">
+      <mat-icon>clear</mat-icon>
+    </button>
+
+    <!-- Add a new task button -->
+    <button mat-button *ngIf="newTask" matSuffix mat-icon-button aria-label="Add a new task" (click)="addTask(newTask)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<div class="tasks" *ngIf="tasks.length">
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let task of tasks; let id = index">
+      {{ task.text }}
+
+      <button mat-icon-button (click)="removeTask(id)">
+        <mat-icon>remove_circle_outline</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>
+
 <ng-template #showLogin>
   <button mat-raised-button (click)="login()">Login with Google</button>
 </ng-template>

@@ -1,0 +1,14 @@
+:host {
+    .new-task {
+        width: 100vw;
+        height: 100px;
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        /deep/ mat-form-field {
+            width: 350px;
+        }
+    }
+}
