@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  Firebase Angular 6 App
+
+  <div class="spacer"></div>
+
+  <div *ngIf="angularFireAuth.user | async as user; else showLogin">
+    <button mat-button [matMenuTriggerFor]="menu">{{ user.email }}</button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<ng-template #showLogin>
+  <button mat-raised-button (click)="login()">Login with Google</button>
+</ng-template>
