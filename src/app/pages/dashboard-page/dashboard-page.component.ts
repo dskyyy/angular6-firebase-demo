@@ -5,11 +5,10 @@ import { AngularFirestore } from 'angularfire2/firestore'
 import { AngularFireAuth } from 'angularfire2/auth'
 
 import { auth as FirebaseAuth, User } from 'firebase/app'
+import { firestore as Firestore } from 'firebase/app'
 
 import { Subscription } from 'rxjs'
 import { flatMap, filter } from 'rxjs/operators'
-
-import * as firebase from 'firebase/app'
 
 @Component({
   selector: 'app-dashboard-page',
@@ -38,7 +37,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   }
 
   addTask(text: string) {
-    const timestamp = firebase.firestore.FieldValue.serverTimestamp()
+    const timestamp = Firestore.FieldValue.serverTimestamp()
 
     this.db
       .collection('users')
@@ -46,13 +45,13 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       .collection('tasks')
       .add({ text, timestamp })
       .then(ref => {
-        this.snackbar.open(`Task #${ref.id} was created`)
+        this.snackbar.open(`Task #${ref.id} was created`, null, { duration: 1500 })
 
         ref.update({ id: ref.id })
 
         this.clearTaskField()
       })
-      .catch(err => this.snackbar.open(err))
+      .catch(err => this.snackbar.open(err, null, { duration: 1500 }))
   }
 
   removeTask(id: string) {
@@ -62,15 +61,15 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
       .collection('tasks')
       .doc(id)
       .delete()
-      .then(() => this.snackbar.open(`Task ${id} was removed`))
-      .catch(err => this.snackbar.open(err))
+      .then(() => this.snackbar.open(`Task ${id} was removed`, null, { duration: 1500 }))
+      .catch(err => this.snackbar.open(err, null, { duration: 1500 }))
   }
 
   login() {
     this.angularFireAuth.auth
       .signInWithPopup(new FirebaseAuth.GoogleAuthProvider())
       .then(() => this._subscribeOnTasks())
-      .catch(err => this.snackbar.open(err))
+      .catch(err => this.snackbar.open(err, null, { duration: 1500 }))
   }
 
   logout() {

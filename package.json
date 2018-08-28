@@ -1,5 +1,5 @@
 {
-  "name": "firebase-app",
+  "name": "angular6-firebase-demo",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
