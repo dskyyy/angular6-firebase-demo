@@ -1,15 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
+import { MatSnackBar } from '@angular/material'
 
-import { AngularFirestore, DocumentData } from 'angularfire2/firestore'
+import { AngularFirestore } from 'angularfire2/firestore'
 import { AngularFireAuth } from 'angularfire2/auth'
 
-import { auth as FirebaseAuth, User } from 'firebase'
+import { auth as FirebaseAuth, User } from 'firebase/app'
 
 import { Subscription } from 'rxjs'
 import { flatMap, filter } from 'rxjs/operators'
 
-import * as firebase from 'firebase'
-import { MatSnackBar } from '@angular/material'
+import * as firebase from 'firebase/app'
 
 @Component({
   selector: 'app-dashboard-page',
