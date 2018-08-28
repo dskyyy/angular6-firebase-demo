@@ -29,10 +29,10 @@
 
 <div class="tasks" *ngIf="tasks.length">
   <mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let task of tasks; let id = index">
+    <mat-list-item role="listitem" *ngFor="let task of tasks">
       {{ task.text }}
 
-      <button mat-icon-button (click)="removeTask(id)">
+      <button mat-icon-button (click)="removeTask(task.id)">
         <mat-icon>remove_circle_outline</mat-icon>
       </button>
     </mat-list-item>

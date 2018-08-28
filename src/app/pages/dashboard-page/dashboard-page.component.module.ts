@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { FormsModule } from '@angular/forms'
+
 import {
   MatToolbarModule,
   MatButtonModule,
@@ -7,13 +9,14 @@ import {
   MatMenuModule,
   MatFormFieldModule,
   MatInputModule,
-  MatListModule
+  MatListModule,
+  MatSnackBarModule
 } from '@angular/material'
 
 import { AngularFireAuthModule } from 'angularfire2/auth'
+import { AngularFirestoreModule } from 'angularfire2/firestore'
 
 import { DashboardPageComponent } from './dashboard-page.component'
-import { FormsModule } from '@angular/forms'
 
 @NgModule({
   imports: [
@@ -26,7 +29,9 @@ import { FormsModule } from '@angular/forms'
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    AngularFireAuthModule
+    MatSnackBarModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   exports: [DashboardPageComponent],
   declarations: [DashboardPageComponent]

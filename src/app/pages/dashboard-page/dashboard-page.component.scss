@@ -11,4 +11,10 @@
             width: 350px;
         }
     }
+
+    .tasks {
+        /deep/ mat-list-item {
+            text-align: center;
+        }
+    }
 }
